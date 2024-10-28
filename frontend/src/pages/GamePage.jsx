@@ -1,8 +1,10 @@
+import FinancialSimulator from '../components/FinancialSimulator';
+
 export default function GamePage() {
   return (
     <div>
-      <h1>Welcome to the Game</h1>
-      <p>This is where the student simulation or game elements will go!</p>
+      <h1>Welcome to the Financial Simulator Game</h1>
+      <FinancialSimulator />
     </div>
   );
 }

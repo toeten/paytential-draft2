@@ -10,6 +10,7 @@ import { checkForLoggedInUser } from './adapters/auth-adapter';
 import UsersPage from './pages/Users';
 import UserPage from './pages/User';
 import GamePage from './pages/GamePage'; // Import the GamePage
+import AboutUs from './components/AboutUs';
 
 export default function App() {
   const { setCurrentUser } = useContext(UserContext);
@@ -28,6 +29,7 @@ export default function App() {
           <Route path='/sign-up' element={<SignUpPage />} />
           <Route path='/users' element={<UsersPage />} />
           <Route path='/users/:id' element={<UserPage />} />
+          <Route path='/about' element={<AboutUs />} />
           <Route path='/game' element={<GamePage />} /> {/* Game Page Route */}
           <Route path='*' element={<NotFoundPage />} />
         </Routes>

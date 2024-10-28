@@ -23,6 +23,18 @@ export default function UserPage() {
   }, [redirectToGame, navigate, setRedirectToGame]);
 
   useEffect(() => {
+    // Load role and organization from local storage if they exist
+    const storedRole = localStorage.getItem("role");
+    const storedOrganization = localStorage.getItem("organization");
+
+    if (storedRole && storedOrganization) {
+      setCurrentUser((prevUser) => ({
+        ...prevUser,
+        role: storedRole,
+        organization: storedOrganization,
+      }));
+    }
+
     const loadUser = async () => {
       const [user, error] = await getUser(id);
       if (error) return setErrorText(error.message);
@@ -30,11 +42,21 @@ export default function UserPage() {
     };
 
     loadUser();
-  }, [id]);
+  }, [id, setCurrentUser]);
+
+  useEffect(() => {
+    // Update local storage whenever role or organization changes
+    if (currentUser?.role && currentUser?.organization) {
+      localStorage.setItem("role", currentUser.role);
+      localStorage.setItem("organization", currentUser.organization);
+    }
+  }, [currentUser?.role, currentUser?.organization]);
 
   const handleLogout = async () => {
     logUserOut();
     setCurrentUser(null);
+    localStorage.removeItem("role"); // Clear role from local storage
+    localStorage.removeItem("organization"); // Clear organization from local storage
     navigate('/');
   };
 
@@ -49,10 +71,8 @@ export default function UserPage() {
 
   return (
     <>
-      <h1>{profileUsername}</h1>
+      <h1>Welcome {profileUsername}</h1>
       {!!isCurrentUserProfile && <button onClick={handleLogout}>Log Out</button>}
-      <p>If the user had any data, here it would be</p>
-      <p>Fake Bio or something</p>
       {isCurrentUserProfile && <UpdateUsernameForm currentUser={currentUser} setCurrentUser={setCurrentUser} />}
 
       {isCurrentUserProfile && !currentUser.role && !currentUser.organization && (

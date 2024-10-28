@@ -1,16 +1,266 @@
+/* === Global Styling === */
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-input, label {
+/* === Layout and Container Styling === */
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  flex: 1;
+}
+
+.sidebar {
+  width: 250px;
+  padding: 1rem;
+  background-color: #f7f9fb;
+  border-left: 2px solid #ddd;
+  overflow-y: auto;
+  max-height: 600px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* === Button Styling === */
+button {
   display: block;
+  margin: 1rem auto;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #2c3e50;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-input {
+button:hover {
+  background-color: #34495e;
+}
+
+/* === Calendar Component === */
+.calendar {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 5px;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day,
+.empty-day {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.day.completed {
+  background-color: #d3eafd;
+}
+
+.day.event {
+  background-color: #f9d3d3;
+  position: relative;
+}
+
+.day.event::after {
+  content: "•";
+  color: #e63946;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 1.2rem;
+}
+
+/* === Popup Styling === */
+.popup {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+/* === Sidebar Styling === */
+.sidebar h3 {
+  font-size: 1.2rem;
+  color: #34495e;
+  text-align: center;
   margin-bottom: 1rem;
 }
 
+.transaction-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transaction-item {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.9rem;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-list h4 {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  text-align: left;
+}
+
+/* === Home Page Styling === */
+.home-container {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.hero-section {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  background-color: #e63946;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #d62839;
+}
+
+.features-section {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+.feature {
+  flex: 1;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.feature p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* === About Page Styling === */
+.about-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.about-container h1,
+.about-container h2 {
+  color: #2c3e50;
+}
+
+.mission-section,
+.features-section,
+.values-section {
+  margin-top: 1.5rem;
+}
+
+.features-section ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.features-section li {
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+p {
+  margin-top: 0.5rem;
+  line-height: 1.6;
+}
+
+/* === Navigation Styling === */
 header {
   display: flex;
   justify-content: space-between;
@@ -46,9 +296,155 @@ form {
   margin: 1rem auto;
 }
 
-/* automatically added by NavLink component */
 .active {
   color: #EEBC32;
   font-weight: bold;
   font-style: italic;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-height: 400px;
+    margin-left: 0;
+  }
+
+  .hero-section {
+    padding: 2rem;
+  }
+
+  .features-section {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .feature {
+    margin-bottom: 1rem;
+  }
+}
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Home Page Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.fade-in-bottom {
+  opacity: 0;
+  animation: fadeInFromBottom 1.5s ease forwards;
+  animation-delay: 0.5s; /* Delay to make it appear slightly after the container */
+}
+
+/* Hero Section Styling */
+.home-container {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.hero-section {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  background-color: #e63946;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #d62839;
+}
+
+
+/* Calendar Day Styling for Positive and Negative Events */
+.day.event-positive {
+  background-color: #d4edda; /* Light green for positive events */
+  color: #155724;
+  position: relative;
+}
+
+.day.event-negative {
+  background-color: #f8d7da; /* Light red for negative events */
+  color: #721c24;
+  position: relative;
+}
+
+.day.event-positive::after, .day.event-negative::after {
+  content: "•";
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 1.2rem;
+}
+
+.day.event-positive::after {
+  color: #28a745; /* Green dot */
+}
+
+.day.event-negative::after {
+  color: #e63946; /* Red dot */
+}
+
+/* Sidebar Transaction Styling for Positive and Negative Events */
+.transaction-item-positive {
+  color: #28a745; /* Green text for positive transactions */
+}
+
+.transaction-item-negative {
+  color: #e63946; /* Red text for negative transactions */
 }
