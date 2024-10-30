@@ -22,6 +22,8 @@ if (isLeapYear(currentYear)) daysInMonth[1] = 29;
 
 
   const rent = -lifestyleExpenses.housing;
+  const groceryExpenses = -lifestyleExpenses.food
+
   const days = Array.from({ length: daysInMonth[currentMonth] }, (_, i) => i + 1);
 
    // Define random events pool
@@ -78,7 +80,6 @@ if (isLeapYear(currentYear)) daysInMonth[1] = 29;
     { description: "Extra pet supplies expense.", amount: -35, bucket: "needs" }
   ];
 
-  const groceryEvent = { name: 'Groceries', amount: -200, bucket: 'needs' };
   const utilitiesEvents = [
     { name: 'Electric Bill', amount: -100, bucket: 'needs' },
     { name: 'Water Bill', amount: -50, bucket: 'needs' },
@@ -86,26 +87,37 @@ if (isLeapYear(currentYear)) daysInMonth[1] = 29;
   ];
 
   const startMonth = () => {
+    // End simulation if it’s December (month 11)
     if (currentMonth === 11) {
       setSimulationOver(true);
       return;
     }
-    transferToSavings();
+  
+    // Only transfer to savings if it's not January (month 0)
+    if (currentMonth !== 0) {
+      transferToSavings();
+    }
+  
+    // Replenish buckets at the start of each month
     replenishBuckets();
-
+    // Update month and year
     setCurrentMonth((prevMonth) => (prevMonth + 1) % 12);
     if (currentMonth === 11) setCurrentYear((prevYear) => prevYear + 1);
-
+  
+    // Set monthly events
     const eventCount = Math.floor(Math.random() * 4);
     const selectedEvents = Array.from({ length: eventCount }, () => randomEvents[Math.floor(Math.random() * randomEvents.length)]);
     setMonthlyEvents(selectedEvents);
-
+  
+    // Reset day states for the new month
     setCurrentDay(1);
     setDayStates({});
     setMonthInProgress(true);
-
+    
+    // Start daily progression
     advanceDay(1);
   };
+  
 
   const transferToSavings = () => {
     const totalTransfer = parseFloat((breakdown.needs + breakdown.wants).toFixed(2));
@@ -148,13 +160,13 @@ if (isLeapYear(currentYear)) daysInMonth[1] = 29;
     setDayStates(newDayStates);
     setCurrentDay(day);
 
-    if (day === 14 || day === 28) {
-      handleTransaction(groceryEvent);
+    if (day === 28) {
+      handleTransaction({ name: 'Food', amount: groceryExpenses, bucket: 'needs' });
       setDayStates((prev) => ({ ...prev, [day]: 'event-negative' }));
       return;
     }
 
-    if (monthlyEvents.length > 0 && day % 7 === 0) {
+    if (monthlyEvents.length > 0 && day % 3 === 0) {
       const event = monthlyEvents.pop();
       handleTransaction(event);
       const eventClass = event.amount > 0 ? 'event-positive' : 'event-negative';
@@ -167,7 +179,7 @@ if (isLeapYear(currentYear)) daysInMonth[1] = 29;
   };
 
   const handleEndOfMonthEvents = () => {
-    if (!monthInProgress) return;
+    if (!monthInProgress ) return;
     utilitiesEvents.forEach(event => handleTransaction(event));
     const rentEvent = { name: 'Monthly Rent', amount: rent, bucket: 'needs' };
     handleTransaction(rentEvent);
@@ -175,7 +187,7 @@ if (isLeapYear(currentYear)) daysInMonth[1] = 29;
   };
 
   useEffect(() => {
-    if (currentMonth >= 0 || currentYear > 2024) {
+    if (currentMonth >= 0) {
       const rentEvent = { name: 'Monthly Rent', amount: rent, bucket: 'needs' };
       handleTransaction(rentEvent);
     }
@@ -265,12 +277,12 @@ if (isLeapYear(currentYear)) daysInMonth[1] = 29;
               </div>
             </div>
 
-            <h3>Remaining Balances</h3>
+            {/* <h3>Remaining Balances</h3>
             <ul>
               <li>Needs: ${breakdown.needs.toFixed(2)}</li>
               <li>Wants: ${breakdown.wants.toFixed(2)}</li>
               <li>Savings: ${breakdown.savings.toFixed(2)}</li>
-            </ul>
+            </ul> */}
           </>
         )}
       </div>

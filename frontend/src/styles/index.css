@@ -669,7 +669,7 @@ nav a.active {
 
 
 /* Financial Simulator Container */
-.financial-simulator {
+.financial-simulator-container {
   max-width: 700px;
   margin: 2rem auto;
   padding: 2rem;
@@ -680,33 +680,22 @@ nav a.active {
 }
 
 /* Headings */
-.financial-simulator h1 {
+.simulator-heading {
   color: #2b6c4b; /* Deep green */
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
 
-.financial-simulator h2 {
+.selection-heading {
   color: #3a4a5d; /* Slate blue */
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
-.financial-simulator h3 {
-  color: #2c3e50; /* Darker slate blue */
-  font-size: 1.3rem;
-  margin-top: 1.5rem;
-}
-
-.financial-simulator h4 {
-  color: #34495e;
-  font-size: 1.2rem;
-  margin-top: 1rem;
-}
-
 /* Dropdown Styling */
-.financial-simulator select {
+.income-select,
+.lifestyle-select {
   width: 100%;
   padding: 0.8rem;
   font-size: 1rem;
@@ -718,10 +707,12 @@ nav a.active {
   transition: border-color 0.3s;
 }
 
-.financial-simulator select:focus {
+.income-select:focus,
+.lifestyle-select:focus {
   border-color: #2b6c4b; /* Deep green on focus */
   outline: none;
 }
+
 
 /* Income and Breakdown Info */
 .financial-simulator p {
@@ -766,6 +757,7 @@ nav a.active {
   max-width: 400px;
   width: 90%;
   text-align: center;
+  list-style: none;
 }
 
 /* Popup Button Styling */
@@ -826,4 +818,26 @@ nav a.active {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.popup ul {
+  list-style: none;
+}
+.popup li {
+  font-size: 1rem;
+  color: #333; /* Match general text color */
+  margin-bottom: 0.8rem; /* Space between items for readability */
+}
+
+.popup .cancel-button {
+  background-color: #d62839;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.popup .cancel-button:hover {
+  background-color: #8e1d28; 
 }
