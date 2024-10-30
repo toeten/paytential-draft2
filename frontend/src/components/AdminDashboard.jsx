@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import CurrentUserContext from '../contexts/current-user-context';
 
 export default function AdminDashboard() {
-  const { currentUser, users, setUsers } = useContext(CurrentUserContext);
+  const { currentUser, users = [], setUsers } = useContext(CurrentUserContext); // Default users to an empty array
 
   // Filter students in the same organization
   const studentsInOrg = users.filter(
@@ -15,7 +15,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div>
+    <div className="admin-dashboard">
       <h2>Admin Dashboard</h2>
       <h3>Students in {currentUser.organization}:</h3>
       <ul>
@@ -29,3 +29,4 @@ export default function AdminDashboard() {
     </div>
   );
 }
+

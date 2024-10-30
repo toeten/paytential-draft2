@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import SummaryReport from './SummaryReport';
 
-export default function CalendarSimulator({ breakdown, setBreakdown, monthlyIncome }) {
+export default function CalendarSimulator({ breakdown, setBreakdown, monthlyIncome, lifestyleExpenses }) {
+ 
+
   const [currentMonth, setCurrentMonth] = useState(0);
   const [currentYear, setCurrentYear] = useState(2024);
   const [popup, setPopup] = useState(null);
@@ -11,13 +13,15 @@ export default function CalendarSimulator({ breakdown, setBreakdown, monthlyInco
   const [currentDay, setCurrentDay] = useState(1);
   const [monthInProgress, setMonthInProgress] = useState(false);
   const [monthlyEvents, setMonthlyEvents] = useState([]);
-
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const months = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"]
   const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const isLeapYear = (year) => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-  if (isLeapYear(currentYear)) daysInMonth[1] = 29;
+if (isLeapYear(currentYear)) daysInMonth[1] = 29;
 
-  const rent = parseFloat((monthlyIncome * -0.3).toFixed(2));
+
+
+  const rent = -lifestyleExpenses.housing;
   const days = Array.from({ length: daysInMonth[currentMonth] }, (_, i) => i + 1);
 
    // Define random events pool
@@ -86,7 +90,6 @@ export default function CalendarSimulator({ breakdown, setBreakdown, monthlyInco
       setSimulationOver(true);
       return;
     }
-
     transferToSavings();
     replenishBuckets();
 

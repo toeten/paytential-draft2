@@ -180,7 +180,7 @@ button:hover {
 }
 
 .cta-button {
-  background-color: #e63946;
+  background-color: #2d9447c8;
   color: #fff;
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
@@ -192,7 +192,7 @@ button:hover {
 }
 
 .cta-button:hover {
-  background-color: #d62839;
+  background-color: #267323c1;
 }
 
 .features-section {
@@ -424,27 +424,406 @@ form {
   position: relative;
 }
 
-.day.event-positive::after, .day.event-negative::after {
-  content: "•";
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  font-size: 1.2rem;
-}
 
-.day.event-positive::after {
-  color: #28a745; /* Green dot */
-}
-
-.day.event-negative::after {
-  color: #e63946; /* Red dot */
-}
-
-/* Sidebar Transaction Styling for Positive and Negative Events */
+/* Sidebar Transaction Styling */
 .transaction-item-positive {
   color: #28a745; /* Green text for positive transactions */
 }
 
 .transaction-item-negative {
   color: #e63946; /* Red text for negative transactions */
+}
+
+
+/* Container styling */
+.admin-dashboard {
+  background-color: #f4f5f7; /* Light gray for a clean background */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+.admin-dashboard h2 {
+  color: #2b6c4b; /* Deep green for header */
+  font-size: 24px;
+  text-align: center;
+}
+
+.admin-dashboard h3 {
+  color: #3a4a5d; /* Slate blue for subheading */
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* List styling */
+.admin-dashboard ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.admin-dashboard li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin: 8px 0;
+  background-color: #ffffff;
+  border: 1px solid #e0e4e7; /* Light border for separation */
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.admin-dashboard li:hover {
+  background-color: #edf7ed; /* Light green on hover */
+}
+
+/* Button styling */
+.admin-dashboard button {
+  background-color: #2b6c4b; /* Green */
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.admin-dashboard button:hover {
+  background-color: #215539; /* Darker green on hover */
+}
+
+/* Form container styling */
+.update-form {
+  background-color: #f4f5f7; /* Light gray background */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styling */
+.update-form h2 {
+  color: #2b6c4b; /* Deep green */
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Label styling */
+.update-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #3a4a5d; /* Slate blue */
+}
+
+/* Input styling */
+.update-form input[type='text'] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #e0e4e7;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #3a4a5d;
+  transition: border-color 0.3s;
+}
+
+.update-form input[type='text']:focus {
+  border-color: #2b6c4b; /* Green border on focus */
+  outline: none;
+}
+
+/* Button styling - same as Admin Dashboard */
+.update-form button {
+  background-color: #2b6c4b; /* Green */
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.update-form button:hover {
+  background-color: #215539; /* Darker green on hover */
+}
+
+
+
+/* Container styling for consistency */
+.user-profile-container {
+  background-color: #f4f5f7; /* Light gray */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Heading styling */
+.user-profile-container h1 {
+  color: #2b6c4b; /* Deep green */
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Button styling */
+.user-profile-container button {
+  background-color: #2b6c4b; /* Green */
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 200px;
+}
+
+.user-profile-container button:hover {
+  background-color: #215539; /* Darker green on hover */
+}
+
+/* Role and organization information */
+.user-profile-container .role-info {
+  color: #3a4a5d; /* Slate blue */
+  font-size: 16px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Centering elements */
+.user-profile-container .center-content {
+  display: flex;
+  justify-content: center;
+}
+
+/* Header styling */
+header {
+  background-color: #3a4a5d; /* Slate blue */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo styling */
+#logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffba08; /* Gold */
+  text-decoration: none;
+}
+
+/* Navigation styling */
+nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+}
+
+/* Link styling */
+nav a {
+  color: #f4f5f7; /* Light gray */
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+  background-color: #2b6c4b; /* Green on hover */
+  color: #ffffff;
+}
+
+/* Active link styling */
+nav a.active {
+  background-color: #ffba08; /* Gold for active links */
+  color: #3a4a5d; /* Slate blue for contrast */
+}
+
+
+/* Financial Simulator Container */
+.financial-simulator {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f4f5f7; /* Light gray background */
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Headings */
+.financial-simulator h1 {
+  color: #2b6c4b; /* Deep green */
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.financial-simulator h2 {
+  color: #3a4a5d; /* Slate blue */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.financial-simulator h3 {
+  color: #2c3e50; /* Darker slate blue */
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+}
+
+.financial-simulator h4 {
+  color: #34495e;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+/* Dropdown Styling */
+.financial-simulator select {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  margin-bottom: 1.5rem;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+.financial-simulator select:focus {
+  border-color: #2b6c4b; /* Deep green on focus */
+  outline: none;
+}
+
+/* Income and Breakdown Info */
+.financial-simulator p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+.financial-simulator ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.financial-simulator ul li {
+  background-color: #ffffff;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  border-left: 4px solid #2b6c4b; /* Left border color for emphasis */
+  color: #3a4a5d;
+  font-weight: bold;
+}
+
+/* Calendar Simulator Container */
+.calendar-container {
+  margin-top: 2rem;
+}
+
+/* Popup Styling */
+.popup {
+  background-color: rgba(255, 255, 255, 0.95); /* Lightened background for contrast */
+  color: #333; /* Dark text for readability */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+/* Popup Button Styling */
+.popup button {
+  background-color: #2b6c4b; /* Green button color */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 15px;
+}
+
+.popup button:hover {
+  background-color: #215539; /* Darker green on hover */
+}
+
+
+.financial-simulator-container {
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sidebar {
+  width: 250px;
+  padding: 1rem;
+  background-color: #f7f9fb;
+  border-right: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 1rem;
+}
+
+.sidebar h3 {
+  color: #2b6c4b; /* Deep green */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #34495e;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

@@ -14,6 +14,7 @@ const checkAuthentication = require('./middleware/checkAuthentication');
 // controller imports
 const authControllers = require('./controllers/authControllers');
 const userControllers = require('./controllers/userControllers');
+const profileControllers = require('./controllers/profileControllers');
 const app = express();
 
 // middleware
@@ -46,6 +47,10 @@ app.get('/api/users', checkAuthentication, userControllers.listUsers);
 app.get('/api/users/:id', checkAuthentication, userControllers.showUser);
 app.patch('/api/users/:id', checkAuthentication, userControllers.updateUser);
 
+///////////////////////////////
+// Profile Route
+///////////////////////////////
+app.post('/api/profile', profileControllers.createProfile);
 
 
 ///////////////////////////////

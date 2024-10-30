@@ -23,18 +23,6 @@ export default function UserPage() {
   }, [redirectToGame, navigate, setRedirectToGame]);
 
   useEffect(() => {
-    // Load role and organization from local storage if they exist
-    const storedRole = localStorage.getItem("role");
-    const storedOrganization = localStorage.getItem("organization");
-
-    if (storedRole && storedOrganization) {
-      setCurrentUser((prevUser) => ({
-        ...prevUser,
-        role: storedRole,
-        organization: storedOrganization,
-      }));
-    }
-
     const loadUser = async () => {
       const [user, error] = await getUser(id);
       if (error) return setErrorText(error.message);
@@ -42,21 +30,11 @@ export default function UserPage() {
     };
 
     loadUser();
-  }, [id, setCurrentUser]);
-
-  useEffect(() => {
-    // Update local storage whenever role or organization changes
-    if (currentUser?.role && currentUser?.organization) {
-      localStorage.setItem("role", currentUser.role);
-      localStorage.setItem("organization", currentUser.organization);
-    }
-  }, [currentUser?.role, currentUser?.organization]);
+  }, [id]);
 
   const handleLogout = async () => {
     logUserOut();
     setCurrentUser(null);
-    localStorage.removeItem("role"); // Clear role from local storage
-    localStorage.removeItem("organization"); // Clear organization from local storage
     navigate('/');
   };
 
@@ -70,27 +48,42 @@ export default function UserPage() {
   const profileUsername = isCurrentUserProfile ? currentUser.username : userProfile.username;
 
   return (
-    <>
+    <div className="user-profile-container">
       <h1>Welcome {profileUsername}</h1>
-      {!!isCurrentUserProfile && <button onClick={handleLogout}>Log Out</button>}
-      {isCurrentUserProfile && <UpdateUsernameForm currentUser={currentUser} setCurrentUser={setCurrentUser} />}
 
-      {isCurrentUserProfile && !currentUser.role && !currentUser.organization && (
+      {/* Logout Button */}
+      {!!isCurrentUserProfile && (
+        <div className="center-content">
+          <button onClick={handleLogout}>Log Out</button>
+        </div>
+      )}
+
+      {/* Update Username Form */}
+      {isCurrentUserProfile && (
+        <UpdateUsernameForm currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      )}
+
+      {/* Role and Organization Info or Form */}
+      {isCurrentUserProfile && !currentUser.role && !currentUser.organization ? (
         <RoleAndOrganizationForm />
+      ) : (
+        currentUser.role && currentUser.organization && (
+          <p className="role-info">
+            Your role is {currentUser.role} in the {currentUser.organization} organization.
+          </p>
+        )
       )}
 
-      {currentUser.role && currentUser.organization && (
-        <p>Your role is {currentUser.role} in the {currentUser.organization} organization.</p>
-      )}
-
-      {/* Show Admin Dashboard if user is an admin */}
+      {/* Admin Dashboard */}
       {currentUser.role === 'admin' && <AdminDashboard />}
 
-      {/* Show Start Game button if user is a student */}
+      {/* Start Game Button for Students */}
       {currentUser.role === 'student' && (
-        <button onClick={handleStartGame}>Start Game</button>
+        <div className="center-content">
+          <button onClick={handleStartGame}>Start Game</button>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 
